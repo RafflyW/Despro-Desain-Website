@@ -10,11 +10,12 @@ class StatusRobot(IntEnum):
     ROBOT_MENGALAMI_KENDALA = 107
 
 class StatusElektronika(IntEnum):
-    ELEKTRONIKA_TIDAKTERHUBUNG = 201
-    ELEKTRONIKA_TERHUBUNG = 202
+    ELEKTRONIKA_ERROR = 201
+    ELEKTRONIKA_TIDAK_TERHUBUNG = 202
     ELEKTRONIKA_OK = 203
-    WIFI_TIDAKTERHUBUNG = 251
-    WIFI_TERHUBUNG = 252
+    WIFI_ERROR = 251
+    WIFI_TIDAK_TERHUBUNG = 252
+    WIFI_TERHUBUNG = 253
 
 class StatusPaket(IntEnum):
     ROBOT_TIDAK_TERSEDIA = 301
@@ -39,22 +40,23 @@ def get_status_robot(code):
         robot_status = {"text": "ROBOT KEMBALI KE STATION", "color": "text-primary"} # Hijau
     elif code == 107:
         robot_status = {"text": "ROBOT MENGALAMI KENDALA", "color": "text-danger"} # Merah
-        
     return robot_status
 
 def get_status_elektronika(code):
     elektronika_status = {"text": "UNKNOWN", "color": "text-secondary"}
     
     if code == 201:
-        elektronika_status = {"text": "TIDAK TERHUBUNG", "color": "text-danger"} # Merah
+        elektronika_status = {"text": "ERROR", "color": "text-danger"} # Merah
     elif code == 202:
         elektronika_status = {"text": "TERHUBUNG", "color": "text-warning"} # Amber
     elif code == 203:
         elektronika_status = {"text": "OK", "color": "text-success"} # Hijau
     elif code == 251:
-        elektronika_status = {"text": "TIDAK TERHUBUNG", "color": "text-danger"} # Merah
+        elektronika_status = {"text": "WIFI ERROR", "color": "text-danger"} # Merah
     elif code == 252:
-        elektronika_status = {"text": "TERHUBUNG", "color": "text-success"} # Hijau
+        elektronika_status = {"text": "TIDAK TERHUBUNG", "color": "text-danger"} # Merah
+    elif code == 253:
+        elektronika_status = {"text": "OK", "color": "text-success"} # Hijau
     return elektronika_status
 
 def get_status_paket(code):

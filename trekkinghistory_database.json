@@ -1,0 +1,52 @@
+[
+    {
+        "tujuan_sekarang": "12A",
+        "pengirim_terakhir": "Raffly",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_BAWAH -> 13A -> 13B -> 12A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju J_BAWAH",
+            "Belok Kanan di J_BAWAH menuju 13A",
+            "Lurus melewati 13A ke 13B",
+            "Belok Kanan di 13B menuju 12A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "12A -> 13B -> 13A -> J_BAWAH -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 12A",
+            "Maju menuju 13B",
+            "Belok Kiri di 13B menuju 13A",
+            "Lurus melewati 13A ke J_BAWAH",
+            "Belok Kiri di J_BAWAH menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Noobpoh",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    }
+]

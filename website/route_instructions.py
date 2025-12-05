@@ -65,3 +65,24 @@ def generate_instructions(path, coords):
 
     instructions.append("Sampai di Tujuan")
     return instructions
+
+def generate_return_instructions(current_node, coords):
+    """
+    Membuat instruksi pulang dari Posisi Sekarang ke START.
+    Kita akan 'meminjam' fungsi a_star_search dan generate_instructions
+    yang sudah ada, tapi tujuannya dibalik.
+    """
+    # Import di dalam fungsi untuk menghindari Circular Import
+    from .route_calculation import a_star_search
+    
+    # Hitung rute dari Lokasi Terakhir -> START
+    path, _ = a_star_search(current_node, 'START')
+    
+    if path:
+        # Generate instruksi manusiawi
+        instructions = generate_instructions(path, coords)
+        # Tambahkan label visual bahwa ini mode pulang
+        instructions.insert(0, "--- MODE PULANG KE STATION ---")
+        return instructions, " -> ".join(path)
+    
+    return [], ""

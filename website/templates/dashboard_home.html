@@ -1,0 +1,50 @@
+{% extends "dashboard_base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+    <div class="custom-card">
+        <h5>Status Pengiriman</h5>
+        <br>
+        <p style="font-weight: bold;">{{ status_robot.text }} {{ tujuan_display }}</p>
+    
+        <p class="{{ status_pengiriman.color }} fw-bold">
+            {{ status_pengiriman.text }}
+        </p>
+    </div>
+
+        <div class="custom-card">
+            <h5>Total Pengiriman</h5>
+            <br>
+            <h2>{{ total_angka }}</h2>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="custom-card">
+            <h5>WiFi STATUS</h5>
+            <br>
+            <p style="font-weight: bold;">{{ WiFi_Name }}</p>
+            <p class="{{ status_wifi.color }} fw-bold">
+                {{ status_wifi.text }}
+            </p>
+        </div>
+
+        <div class="custom-card">
+            <h5>Hardware Status</h5>
+            <div class="d-flex justify-content-between mb-2">
+                <span>Rasberryy PI</span> 
+                <span class="{{ hw_pi.color }} fw-bold">{{ hw_pi.text }}</span>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <span>ESP32</span> 
+                <span class="{{ hw_esp.color }} fw-bold">{{ hw_esp.text }}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span>RasPI Camera</span> 
+                <span class="{{ hw_cam.color }} fw-bold">{{ hw_cam.text }}</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

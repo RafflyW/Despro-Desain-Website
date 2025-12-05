@@ -1,0 +1,22 @@
+{
+    "status_robot": 104,
+    "status_paket": 301,
+    "wifi": 251,
+    "raspberry": 201,
+    "esp32": 201,
+    "camera": 201,
+    "total_pengiriman": 1500,
+    "tujuan_sekarang": "12A",
+    "pengirim_terakhir": "A",
+    "rute_terakhir": "START -> SIMPANG_UTAMA -> J_BAWAH -> 13A -> 13B -> 12A",
+    "instruksi_navigasi": [
+        "Mulai dari START",
+        "Maju menuju SIMPANG_UTAMA",
+        "Belok Kiri di SIMPANG_UTAMA menuju J_BAWAH",
+        "Belok Kanan di J_BAWAH menuju 13A",
+        "Lurus melewati 13A ke 13B",
+        "Belok Kanan di 13B menuju 12A",
+        "Sampai di Tujuan"
+    ],
+    "pengiriman": 2
+}

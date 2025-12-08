@@ -48,5 +48,27 @@
             "Sampai di Tujuan"
         ],
         "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "10A",
+        "pengirim_terakhir": "sabiq",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 10A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 10A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "10A -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 10A",
+            "Maju menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
     }
 ]

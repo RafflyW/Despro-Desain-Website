@@ -50,8 +50,296 @@
         "status_paket": "Paket tiba di Tujuan"
     },
     {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "13A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_BAWAH -> 13A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju J_BAWAH",
+            "Belok Kanan di J_BAWAH menuju 13A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "13A -> J_BAWAH -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 13A",
+            "Maju menuju J_BAWAH",
+            "Belok Kiri di J_BAWAH menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
         "tujuan_sekarang": "10A",
-        "pengirim_terakhir": "sabiq",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> SIMPANG_KIRI_1 -> BELOKAN_MENUJU_SK3 -> SIMPANG_KIRI_3 -> 10A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju SIMPANG_KIRI_1",
+            "Lurus di SIMPANG_KIRI_1 ke BELOKAN_MENUJU_SK3",
+            "Belok Kanan di BELOKAN_MENUJU_SK3 menuju SIMPANG_KIRI_3",
+            "Belok Kiri di SIMPANG_KIRI_3 menuju 10A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "10A -> SIMPANG_KIRI_3 -> BELOKAN_MENUJU_SK3 -> SIMPANG_KIRI_1 -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG ---",
+            "Mulai dari 10A",
+            "Maju menuju SIMPANG_KIRI_3",
+            "Belok Kanan di SIMPANG_KIRI_3 menuju BELOKAN_MENUJU_SK3",
+            "Belok Kiri di BELOKAN_MENUJU_SK3 menuju SIMPANG_KIRI_1",
+            "Lurus di SIMPANG_KIRI_1 ke SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 11B -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju J_ATAS",
+            "Belok Kiri di J_ATAS menuju 11B",
+            "Belok Kiri di 11B menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> 11B -> J_ATAS -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG KE STATION ---",
+            "Mulai dari 11A",
+            "Maju menuju 11B",
+            "Belok Kanan di 11B menuju J_ATAS",
+            "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "10A",
+        "pengirim_terakhir": "Fauzan",
         "rute_pergi": "START -> SIMPANG_UTAMA -> J_ATAS -> 10A",
         "instruksi_pergi": [
             "Mulai dari START",
@@ -67,6 +355,58 @@
             "Maju menuju J_ATAS",
             "Belok Kanan di J_ATAS menuju SIMPANG_UTAMA",
             "Belok Kiri di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "11A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> SIMPANG_KIRI_1 -> SIMPANG_KIRI_2 -> BELOKAN_11A -> 11A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju SIMPANG_KIRI_1",
+            "Belok Kanan di SIMPANG_KIRI_1 menuju SIMPANG_KIRI_2",
+            "Lurus di SIMPANG_KIRI_2 ke BELOKAN_11A",
+            "Belok Kanan di BELOKAN_11A menuju 11A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "11A -> BELOKAN_11A -> SIMPANG_KIRI_2 -> SIMPANG_KIRI_1 -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG ---",
+            "Mulai dari 11A",
+            "Maju menuju BELOKAN_11A",
+            "Belok Kiri di BELOKAN_11A menuju SIMPANG_KIRI_2",
+            "Lurus di SIMPANG_KIRI_2 ke SIMPANG_KIRI_1",
+            "Belok Kiri di SIMPANG_KIRI_1 menuju SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju START",
+            "Sampai di Tujuan"
+        ],
+        "status_paket": "Paket tiba di Tujuan"
+    },
+    {
+        "tujuan_sekarang": "10A",
+        "pengirim_terakhir": "Fauzan",
+        "rute_pergi": "START -> SIMPANG_UTAMA -> SIMPANG_KIRI_1 -> BELOKAN_MENUJU_SK3 -> SIMPANG_KIRI_3 -> 10A",
+        "instruksi_pergi": [
+            "Mulai dari START",
+            "Maju menuju SIMPANG_UTAMA",
+            "Belok Kiri di SIMPANG_UTAMA menuju SIMPANG_KIRI_1",
+            "Lurus di SIMPANG_KIRI_1 ke BELOKAN_MENUJU_SK3",
+            "Belok Kanan di BELOKAN_MENUJU_SK3 menuju SIMPANG_KIRI_3",
+            "Belok Kiri di SIMPANG_KIRI_3 menuju 10A",
+            "Sampai di Tujuan"
+        ],
+        "rute_pulang": "10A -> SIMPANG_KIRI_3 -> BELOKAN_MENUJU_SK3 -> SIMPANG_KIRI_1 -> SIMPANG_UTAMA -> START",
+        "instruksi_pulang": [
+            "--- MODE PULANG ---",
+            "Mulai dari 10A",
+            "Maju menuju SIMPANG_KIRI_3",
+            "Belok Kanan di SIMPANG_KIRI_3 menuju BELOKAN_MENUJU_SK3",
+            "Belok Kiri di BELOKAN_MENUJU_SK3 menuju SIMPANG_KIRI_1",
+            "Lurus di SIMPANG_KIRI_1 ke SIMPANG_UTAMA",
+            "Belok Kanan di SIMPANG_UTAMA menuju START",
             "Sampai di Tujuan"
         ],
         "status_paket": "Paket tiba di Tujuan"

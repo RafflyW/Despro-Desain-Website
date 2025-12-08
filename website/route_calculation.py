@@ -1,84 +1,94 @@
 import heapq
 import math
 
-# 1. DEFINISI PETA (GRAPH) SESUAI GAMBAR DENAH
-# Kita tambahkan node 'Invisible' (SIMPANG) agar jalur terlihat nyata
-# Struktur:
-# START -> SIMPANG_UTAMA
-# SIMPANG_UTAMA -> (Naik) -> J_ATAS -> Area 10 & 11
-# SIMPANG_UTAMA -> (Diagonal) -> J_BAWAH -> Area 12 & 13
-
+# === 1. DEFINISI GRAPH (JALUR DAN KONEKSI) ===
+# Format: 'NODE_AWAL': {'NODE_TUJUAN': JARAK}
 graph = {
+    # --- AREA START & UTAMA ---
     'START': {'SIMPANG_UTAMA': 2},
-    'SIMPANG_UTAMA': {'START': 2, 'J_ATAS': 3, 'J_BAWAH': 3},
+    'SIMPANG_UTAMA': {'START': 2, 'SIMPANG_KIRI_1': 3, 'BELOKAN_KANAN_AWAL': 3},
+
+    # --- JALUR KANAN (MENUJU 11B, 12A, 12B) ---
+    'BELOKAN_KANAN_AWAL': {'SIMPANG_UTAMA': 3, 'SIMPANG_KANAN_1': 3},
     
-    # Area Atas (10A, 10B, 11A, 11B)
-    'J_ATAS': {'SIMPANG_UTAMA': 3, '10B': 2, '10A': 2, '11B': 2},
-    '10B': {'J_ATAS': 2},
-    '10A': {'J_ATAS': 2},
-    '11B': {'J_ATAS': 2, '11A': 2}, # 11A ada di ujung setelah 11B
-    '11A': {'11B': 2},
+    'SIMPANG_KANAN_1': {
+        'BELOKAN_KANAN_AWAL': 3, 
+        '11B': 2, '12A': 2, '12B': 2
+    },
+    '11B': {'SIMPANG_KANAN_1': 2},
+    '12A': {'SIMPANG_KANAN_1': 2},
+    '12B': {'SIMPANG_KANAN_1': 2},
 
-    # Area Bawah (12A, 12B, 13A, 13B)
-    'J_BAWAH': {'SIMPANG_UTAMA': 3, '13A': 2},
-    '13A': {'J_BAWAH': 2, '13B': 1},
-    '13B': {'13A': 1, '12A': 2, '12B': 2}, # 13B adalah persimpangan kecil ke 12
-    '12A': {'13B': 2},
-    '12B': {'13B': 2}
+    # --- JALUR KIRI (MENUJU 10A, 10B, 11A) ---
+    'SIMPANG_KIRI_1': {
+        'SIMPANG_UTAMA': 3,
+        'SIMPANG_KIRI_2': 2,     # Kanan (naik)
+        'BELOKAN_MENUJU_SK3': 2  # Lurus (kiri)
+    },
+
+    # Sub-Jalur Kiri Atas (Menuju 11A)
+    'SIMPANG_KIRI_2': {
+        'SIMPANG_KIRI_1': 2,
+        'BELOKAN_11A': 2,
+        'SIMPANG_KIRI_3': 3
+    },
+    'BELOKAN_11A': {'SIMPANG_KIRI_2': 2, '11A': 2},
+    '11A': {'BELOKAN_11A': 2},
+
+    # Sub-Jalur Kiri Bawah (Menuju 10A, 10B)
+    'BELOKAN_MENUJU_SK3': {'SIMPANG_KIRI_1': 2, 'SIMPANG_KIRI_3': 2},
+    
+    'SIMPANG_KIRI_3': {
+        'BELOKAN_MENUJU_SK3': 2,
+        '10A': 2, '10B': 2,
+        'SIMPANG_KIRI_2': 3
+    },
+    '10A': {'SIMPANG_KIRI_3': 2},
+    '10B': {'SIMPANG_KIRI_3': 2}
 }
 
-# Koordinat (X, Y) Imajiner untuk hitungan Heuristik (Jarak Garis Lurus)
-# Dibuat berdasarkan posisi visual di gambar denah Anda
+# === 2. KOORDINAT (X, Y) UNTUK LOGIKA BELOKAN ===
 coords = {
-    'START': (10, 5),
-    'SIMPANG_UTAMA': (8, 5),
-    'J_ATAS': (8, 8),
-    '10A': (6, 8),
-    '10B': (2, 7),
-    '11B': (2, 9),
-    '11A': (0, 9),
-    'J_BAWAH': (6, 3),
-    '13A': (5, 3),
-    '13B': (4, 3),
-    '12A': (2, 4),
-    '12B': (2, 2)
+    'START':           (10, 0),
+    'SIMPANG_UTAMA':   (10, 3),
+
+    # Area Kanan
+    'BELOKAN_KANAN_AWAL': (16, 3),
+    'SIMPANG_KANAN_1':    (16, 8),
+    '11B':                (14, 8),
+    '12A':                (16, 11),
+    '12B':                (18, 8),
+
+    # Area Kiri
+    'SIMPANG_KIRI_1':     (4, 3),
+    'SIMPANG_KIRI_2':     (4, 8),
+    'BELOKAN_11A':        (4, 12),
+    '11A':                (6, 12),
+    'BELOKAN_MENUJU_SK3': (1, 3),
+    'SIMPANG_KIRI_3':     (1, 8),
+    '10A':                (-1, 8),
+    '10B':                (1, 11)
 }
 
+# === 3. FUNGSI A* (Standar) ===
 def heuristic(node, goal):
-    # Rumus Euclidean Distance
-    if node not in coords or goal not in coords:
-        return 999 # Jika node tidak dikenal, beri nilai tinggi
+    if node not in coords or goal not in coords: return 999
     x1, y1 = coords[node]
     x2, y2 = coords[goal]
     return math.sqrt((x1 - x2)**2 + (y1 - y2)**2)
 
 def a_star_search(start, goal):
-    # Normalisasi input agar huruf besar semua (misal user ketik 11a jadi 11A)
-    start = start.upper()
-    goal = goal.upper()
-
-    if start not in graph or goal not in graph:
-        return None, "Lokasi tidak ada di Peta"
-
+    start, goal = start.upper(), goal.upper()
+    if start not in graph or goal not in graph: return None, "Lokasi tidak ada"
     queue = [(0, start, [])]
     visited = set()
-    
     while queue:
         cost, current, path = heapq.heappop(queue)
         path = path + [current]
-        
-        if current == goal:
-            return path, "OK"
-        
-        if current in visited:
-            continue
+        if current == goal: return path, "OK"
+        if current in visited: continue
         visited.add(current)
-        
         for neighbor, weight in graph[current].items():
             if neighbor not in visited:
-                g_cost = cost + weight
-                h_cost = heuristic(neighbor, goal)
-                f_cost = g_cost + h_cost
-                heapq.heappush(queue, (f_cost, neighbor, path))
-                
+                heapq.heappush(queue, (cost + weight + heuristic(neighbor, goal), neighbor, path))
     return None, "Jalur Tidak Ditemukan"

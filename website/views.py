@@ -4,12 +4,9 @@ from .route_calculation import a_star_search, coords
 from .route_instructions import generate_instructions
 from .mockup_robot import run_robot_simulation 
 from .status_book_callingcard import StatusRobot, StatusElektronika, StatusPaket
-<<<<<<< Updated upstream
 import threading 
-=======
 from .mqtt_connection import initialize_mqtt_client, send_instructions_via_mqtt
 import threading # Wajib import ini
->>>>>>> Stashed changes
 import json 
 import os
 
@@ -74,21 +71,16 @@ def send_page():
             # Kita pisah hasil (Teks, Kode)
             instruksi_text, instruksi_code = generate_instructions(path, coords)
             
-<<<<<<< Updated upstream
-            # Yang ditampilkan ke Web cuma Teks
-            list_instruksi = instruksi_text
-            
-            # Thread Simulasi dijalankan pakai Teks saja (supaya mockup tidak error)
-=======
             # KIRIM INSTRUKSI KE ESP32 VIA MQTT
             try:
                 send_instructions_via_mqtt(list_instruksi, tujuan, rute_str)
             except Exception as e:
                 print(f"[ERROR] Gagal mengirim instruksi via MQTT: {e}")
+
+            # Yang ditampilkan ke Web cuma Teks
+            list_instruksi = instruksi_text
             
-            # JALANKAN ROBOT DI BACKGROUND (THREADING)
-            # args=(tujuan, pengirim, rute_text, instruksi)
->>>>>>> Stashed changes
+            # Thread Simulasi dijalankan pakai Teks saja (supaya mockup tidak error)
             robot_thread = threading.Thread(target=run_robot_simulation, 
                                             args=(tujuan, nama, rute_str, list_instruksi))
             robot_thread.start()

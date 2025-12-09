@@ -2,19 +2,11 @@ from flask import Blueprint, render_template, request, redirect, url_for
 from website.database_management import read_statuses, update_tujuan_db, ROBOT_STATUS_FILE
 from .route_calculation import a_star_search, coords
 from .route_instructions import generate_instructions
-from .mockup_robot import run_robot_simulation 
+from .mockup_robot import run_robot_simulation # Import fungsi robot
 from .status_book_callingcard import StatusRobot, StatusElektronika, StatusPaket
-import threading 
-from .mqtt_connection import initialize_mqtt_client, send_instructions_via_mqtt
 import threading # Wajib import ini
 import json 
 import os
-
-# Initialize MQTT client when module loads
-try:
-    initialize_mqtt_client()
-except Exception as e:
-    print(f"[WARNING] Failed to initialize MQTT: {e}")
 
 views = Blueprint('views', __name__)
 
@@ -33,23 +25,23 @@ def send_page():
 
     if os.path.exists(ROBOT_STATUS_FILE):
         with open(ROBOT_STATUS_FILE, 'r') as f:
-            try:
-                db_data = json.load(f)
-                current_status = db_data.get('status_robot', 103)
-                tujuan_sekarang = db_data.get('tujuan_sekarang', '-')
-                rute_sekarang = db_data.get('rute_terakhir', '-')
-                instruksi_sekarang = db_data.get('instruksi_navigasi', [])
-            except: pass
+            db_data = json.load(f)
+            current_status = db_data.get('status_robot', int(StatusRobot.ROBOT_STANDBY_DISTATION))
+            tujuan_sekarang = db_data.get('tujuan_sekarang', '-')
+            rute_sekarang = db_data.get('rute_terakhir', '-')
+            instruksi_sekarang = db_data.get('instruksi_navigasi', [])
+            print(f"[VIEW] Current Robot Status: {current_status}")
 
 
-    if current_status in [104, 105, 106, 107]:
+    if current_status in [int(StatusRobot.ROBOT_TIDAK_AKTIF),int(StatusRobot.ROBOT_MENGANTAR_PAKET), int(StatusRobot.ROBOT_TELAH_MENGANTAR_PAKET), int(StatusRobot.ROBOT_MENUJU_STATION)]:
         return render_template("dashboard_send.html", 
-                               mode="MONITOR", 
+                               mode="MONITOR", # Flag khusus untuk HTML
                                status_code=current_status,
                                tujuan=tujuan_sekarang,
                                rute=rute_sekarang,
                                instruksi=instruksi_sekarang)
     
+    # --- HANDLER FORM (Hanya aktif jika status == 1 atau 0) ---
     hasil_rute = ""
     status_rute = ""
     warna_status = ""
@@ -59,6 +51,7 @@ def send_page():
         tujuan = request.form.get('pilihan').upper()
         nama = request.form.get('nama')
         
+        # Validasi Input
         path, msg = a_star_search('START', tujuan)
         
         if path:
@@ -67,24 +60,15 @@ def send_page():
             status_rute = "RUTE OK! ROBOT DILUNCURKAN"
             warna_status = "text-success"
             
-            # === PERBAIKAN PENTING DI SINI ===
-            # Kita pisah hasil (Teks, Kode)
-            instruksi_text, instruksi_code = generate_instructions(path, coords)
+            list_instruksi = generate_instructions(path, coords)
             
-            # KIRIM INSTRUKSI KE ESP32 VIA MQTT
-            try:
-                send_instructions_via_mqtt(list_instruksi, tujuan, rute_str)
-            except Exception as e:
-                print(f"[ERROR] Gagal mengirim instruksi via MQTT: {e}")
-
-            # Yang ditampilkan ke Web cuma Teks
-            list_instruksi = instruksi_text
-            
-            # Thread Simulasi dijalankan pakai Teks saja (supaya mockup tidak error)
+            # JALANKAN ROBOT DI BACKGROUND (THREADING)
+            # args=(tujuan, pengirim, rute_text, instruksi)
             robot_thread = threading.Thread(target=run_robot_simulation, 
                                             args=(tujuan, nama, rute_str, list_instruksi))
             robot_thread.start()
             
+            # Redirect ke halaman send lagi (GET) agar tampilan langsung berubah jadi MONITOR
             return redirect(url_for('views.send_page'))
             
         else:

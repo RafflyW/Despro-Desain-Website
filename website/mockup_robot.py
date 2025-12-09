@@ -35,12 +35,14 @@ def run_robot_simulation(tujuan_awal, nama_pengirim, rute_pergi_text, instruksi_
     # --- PULANG KE STATION (106) ---
     print("[ROBOT] Kembali ke Station...")
     
-    # Generate rute pulang (ambil teks & string saja)
-    # Kita pakai underscore (_) untuk variabel kode yang tidak dipakai simulasi
-    instruksi_pulang_text, _, rute_pulang_text = generate_return_instructions(tujuan_awal, coords)
+    # NEW CODE (Fix: Capture codes)
+    instruksi_pulang_text, instruksi_pulang_codes, rute_pulang_text = generate_return_instructions(tujuan_awal, coords)
+    
+    # Format properly as a tuple ([texts], [codes]) so JSON structure matches Status 104
+    full_return_instructions = (instruksi_pulang_text, instruksi_pulang_codes)
     
     update_tujuan_db(
-        "STATION (PULANG)", "SYSTEM", rute_pulang_text, instruksi_pulang_text, 
+        "STATION (PULANG)", "SYSTEM", rute_pulang_text, full_return_instructions, 
         status_code=106, # Status PULANG
         status_paket=301 # Status TIDAK TERSEDIA
     )

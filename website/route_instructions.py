@@ -1,88 +1,67 @@
 # website/route_instructions.py
 
 def get_turn_direction(p1, p2, p3):
-    """
-    Menentukan arah belokan dari 3 titik (Previous, Current, Next).
-    Menggunakan Cross Product 2D.
-    p = (x, y)
-    """
-    # Vektor Masuk (p1 ke p2)
-    dx1 = p2[0] - p1[0]
-    dy1 = p2[1] - p1[1]
-    
-    # Vektor Keluar (p2 ke p3)
-    dx2 = p3[0] - p2[0]
-    dy2 = p3[1] - p2[1]
-    
-    # Rumus Cross Product: (x1*y2 - y1*x2)
+    # Hitung vektor untuk menentukan belok Kiri (-1) atau Kanan (1)
+    dx1, dy1 = p2[0] - p1[0], p2[1] - p1[1]
+    dx2, dy2 = p3[0] - p2[0], p3[1] - p2[1]
     cross_product = (dx1 * dy2) - (dy1 * dx2)
     
-    # Threshold untuk toleransi "Lurus" (menghindari sedikit miring dianggap belok)
+    # Toleransi lurus 0.5
     if -0.5 < cross_product < 0.5:
-        return "Lurus"
+        return "Lurus", 0
     elif cross_product > 0:
-        return "Belok Kiri"
+        return "Belok Kiri", -1
     else:
-        return "Belok Kanan"
+        return "Belok Kanan", 1
 
 def generate_instructions(path, coords):
-    """
-    path: list nama node ['START', 'SIMPANG', ...]
-    coords: dictionary koordinat {'START': (10,5), ...}
-    """
     if not path or len(path) < 2:
-        return ["Diam di tempat"]
+        return ["Diam di tempat"], [4]
 
-    instructions = []
+    text_list = []
+    code_list = []
     
-    # Instruksi awal
-    instructions.append(f"Mulai dari {path[0]}")
+    # Start (Default maju/lurus = 0)
+    text_list.append(f"Mulai dari {path[0]}")
+    code_list.append(0) 
     
-    # Iterasi node untuk mencari belokan
     for i in range(len(path) - 1):
         curr_node = path[i]
         next_node = path[i+1]
         
-        # Jika ini adalah langkah pertama (START -> Node selanjutnya)
         if i == 0:
-            instructions.append(f"Maju menuju {next_node}")
+            text_list.append(f"Maju menuju {next_node}")
             continue
             
-        # Untuk langkah selanjutnya, kita butuh 3 titik: Prev, Curr, Next
         prev_node = path[i-1]
+        p1, p2, p3 = coords[prev_node], coords[curr_node], coords[next_node]
         
-        p1 = coords[prev_node]
-        p2 = coords[curr_node]
-        p3 = coords[next_node]
+        direction_text, direction_code = get_turn_direction(p1, p2, p3)
         
-        # Cek arah belokan
-        direction = get_turn_direction(p1, p2, p3)
-        
-        if direction == "Lurus":
-             instructions.append(f"Lurus melewati {curr_node} ke {next_node}")
+        # Simpan Teks
+        if direction_code == 0:
+             text_list.append(f"Lurus di {curr_node} ke {next_node}")
         else:
-             instructions.append(f"{direction} di {curr_node} menuju {next_node}")
+             text_list.append(f"{direction_text} di {curr_node} menuju {next_node}")
+        
+        # Simpan Kode (Belokan + Lurus setelah belok)
+        code_list.append(direction_code)
+        if i < len(path) - 2:
+            code_list.append(0)
 
-    instructions.append("Sampai di Tujuan")
-    return instructions
+    # Finish (Stop = 4)
+    text_list.append("Sampai di Tujuan")
+    code_list.append(4)
+    
+    return text_list, code_list
 
 def generate_return_instructions(current_node, coords):
-    """
-    Membuat instruksi pulang dari Posisi Sekarang ke START.
-    Kita akan 'meminjam' fungsi a_star_search dan generate_instructions
-    yang sudah ada, tapi tujuannya dibalik.
-    """
-    # Import di dalam fungsi untuk menghindari Circular Import
     from .route_calculation import a_star_search
-    
-    # Hitung rute dari Lokasi Terakhir -> START
     path, _ = a_star_search(current_node, 'START')
-    
     if path:
-        # Generate instruksi manusiawi
-        instructions = generate_instructions(path, coords)
-        # Tambahkan label visual bahwa ini mode pulang
-        instructions.insert(0, "--- MODE PULANG KE STATION ---")
-        return instructions, " -> ".join(path)
-    
-    return [], ""
+        # Menangkap 2 output (text, code)
+        text, codes = generate_instructions(path, coords)
+        text.insert(0, "--- MODE PULANG ---")
+        # Mengembalikan 3 hal: Teks, Kode, String Rute
+        return text, codes, " -> ".join(path)
+    return [], [], ""
